@@ -36,7 +36,7 @@ CREATE TABLE customer (
 CREATE TABLE product (
   id BIGINT DEFAULT nextval('product_id_seq'::regclass) NOT NULL,
   name TEXT NOT NULL,
-  price FLOAT NOT NULL
+  price MONEY NOT NULL
 );
 
 CREATE TABLE orders (

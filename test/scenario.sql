@@ -1,9 +1,5 @@
 --statement="statements/schema.sql" seed schema
 --statement="statements/insert_data.sql" seed data
-
---statement="statements/materialized_view.sql" daily_sum_of_orders materialized view
---statement="statements/materialized_view2.sql" top_100_buyers materialized view
-
 --statement="../solution/daily_sum_of_orders.sql" daily_sum_of_orders.sql
 --statement="../solution/top_100_buyers.sql" top_100_buyers.sql
 
