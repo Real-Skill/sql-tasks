@@ -7,9 +7,13 @@
     var pg = require('pg');
     var pgConnect = Promise.promisify(pg.connect, pg);
 
+    var host = process.env.POSTGRES_HOST || 'localhost';
+    var username = process.env.POSTGRES_USER || 'realskill';
+    var password = process.env.POSTGRES_PASSWORD || 'realskill';
+    var db = process.env.POSTGRES_DB || 'realskill';
     var config = {
         db: {
-            connectionUrl: process.env.DATABASE_URL || 'postgres://realskill:realskill@localhost/realskill'
+            connectionUrl: 'postgres://' + username + ':' + password + '@' + host + '/' + db
         }
     };
     var highlighStart = '\x1b[31m';
