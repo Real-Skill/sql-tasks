@@ -17,19 +17,19 @@
 --expect="expectations/expected_users3.csv" insert new user with unique nickname and email
 
 --statement
- INSERT INTO users (nickname, first_name, last_name, birth_date, email) values ('ltaylord9', 'Linda', 'Taylor', '1964-01-14','test10@test.com');
+ INSERT INTO users (nickname, first_name, last_name, birth_date, email) values ('ltaylord10', 'Linda', 'Taylor', '1964-01-14','test10@test.com');
 --expect error when insert user without email that already exist
  code, name
  SQL-23505, error
 
 --statement
- INSERT INTO users (nickname, first_name, last_name, birth_date) values ('ltaylor9', 'Linda', 'Taylor', '1964-01-14');
+ INSERT INTO users (nickname, first_name, last_name, birth_date) values ('ltaylord11', 'Linda', 'Taylor', '1964-01-14');
 --expect error when insert user without email
  code, name
  SQL-23502, error
 
 --statement
- INSERT INTO users (nickname, first_name, last_name, birth_date, email) values ('ltaylor9', 'Linda', 'Taylor', '1964-01-14',null);
+ INSERT INTO users (nickname, first_name, last_name, birth_date, email) values ('ltaylord12', 'Linda', 'Taylor', '1964-01-14',null);
 --expect error when insert user email is null
  code, name
  SQL-23502, error
