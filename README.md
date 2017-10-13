@@ -42,7 +42,7 @@ All your modifying queries put in the `solution/alters.sql` file.
 ### Install dependencies 
 
 ```
-npm install
+yarn install
 ```
  
 ### Database connection
