@@ -48,7 +48,7 @@ Then execute queries which:
 ### Install dependencies 
 
 ```
-npm install
+yarn install
 ```
  
 ### Database connection
