@@ -34,7 +34,7 @@ You can modify `solution/schema.sql`, `solution/select_all_bikes.sql` and `solut
 ### To install dependencies 
 
 ```
-npm install
+yarn install
 ```
 
 ## PgSQL test runner
