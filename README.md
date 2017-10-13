@@ -52,7 +52,7 @@ Finally, sort results alphabetically by origin.
 ### Install dependencies 
 
 ```
-npm install
+yarn install
 ```
  
 ### Database connection
