@@ -47,7 +47,7 @@ In other words, provide solution that will keep materialized views in sync with 
 ### Install dependencies 
 
 ```
-npm install
+yarn install
 ```
  
 ### Database connection
