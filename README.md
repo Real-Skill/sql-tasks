@@ -43,7 +43,7 @@ Write your solution in `solution/query.sql` file.
 ### Install dependencies 
 
 ```
-npm install
+yarn install
 ```
  
 ### Database connection
