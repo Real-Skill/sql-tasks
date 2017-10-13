@@ -19,7 +19,7 @@ Save your queries in following files: `solution/search1.sql`, `solution/search2.
 ### Install dependencies 
 
 ```
-npm install
+yarn install
 ```
  
 ### Database connection
