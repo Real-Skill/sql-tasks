@@ -26,7 +26,7 @@ All your modifying queries put in the `solution/query.sql` file.
 ### Install dependencies 
 
 ```
-npm install
+yarn install
 ```
  
 ### Database connection
