@@ -63,7 +63,7 @@ Table below shows results set of `SELECT * FROM view_breed` of valid solution.
 ### Install dependencies 
 
 ```
-npm install
+yarn install
 ```
  
 ### Database connection
