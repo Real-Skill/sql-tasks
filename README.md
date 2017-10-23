@@ -2,13 +2,13 @@
 
 ## Summary
 
-Primitive one-table schema with 20 sample records is provided. 
-The table contains too specific information about dog breeds size. 
-The task is to provide SQL view that will horizontally aggregate sizes and also convert measure units.
+A primitive one-table schema with 20 sample records is provided. 
+The table contains too specific information about the dog breeds' sizes. 
+The task is to provide SQL view that will horizontally aggregate sizes and also convert the measure units.
 
 ## Goal
 
-Provided `breed` table contains following breed size description columns:
+The provided `breed` table contains the following breed size description columns:
 
 ```
 male_height_min
@@ -20,20 +20,20 @@ female_height_max
 female_weight_min
 female_weight_max
 ```
-We want to be able to roughly order breeds by height and weight. With structure above it's a bit difficult and may cause unnecessary query complexity. 
-The way it has to be solved is to horizontally aggregate height and weight; regardless of minimum, maximum and whether it is male or female. 
-In other words we want to calculate average value of height and average value of weight for each breed. Finally height and weight should be casted to an integer.
+We want to be able to roughly order breeds by height and weight. With the structure above it's a bit difficult and may cause unnecessary query complexity. 
+The way it has to be solved is to horizontally aggregate height and weight; regardless of minimum, maximum or whether it is male or female. 
+In other words, we want to calculate the average value of height and the average value of weight for each breed. Finally, the height and weight should be casted to an integer.
 
-Second part of this task is to convert US measure units to metric SI standard. 
-Table `breed` describes all height values in inches and weight in pounds, but desired units are centimeters and kilograms. 
-For dimension use 2.54 multiplier to get centimeters and for weight 0.4536 multiplier to get kilograms.
-Result data set should be ordered by weight and height, both descending.
+The second part of this task is to convert US measure units to the metric SI standard. 
+The `breed` table describes all height values in inches and weight in pounds, but the desired units are centimeters and kilograms. 
+For the dimensions use 2.54 multiplier to get centimeters and for weight 0.4536 multiplier to get kilograms.
+The result data set should be ordered by weight and height, both in descending order.
 
-Your aim is to combine all requirements above and provide SQL view named `view_breed`. 
-The view should contain following columns: `id`, `name`, `origin`, `height`, `weight`.
-Please save view creation script in file `solution/view_breed.sql`. 
+Your aim is to combine all the requirements above and provide SQL view named `view_breed`. 
+The view should contain the following columns: `id`, `name`, `origin`, `height`, `weight`.
+Please save the view creation script in the file `solution/view_breed.sql`. 
 
-Table below shows results set of `SELECT * FROM view_breed` of valid solution. 
+The table below shows the results set of `SELECT * FROM view_breed` of the valid solution. 
 
 |id|name|origin|height|weight|
 |----|--------------|--------|----|----|
@@ -63,23 +63,23 @@ Table below shows results set of `SELECT * FROM view_breed` of valid solution.
 ### Install dependencies 
 
 ```
-yarn install
+npm install
 ```
  
 ### Database connection
 
-You are required to provide valid connection to working PostgreSQL instance. This scaffolding is tested on PostgreSQL 9.4, however it should work on other 
+You are required to provide the valid connection to working PostgreSQL instance. This scaffolding is tested on PostgreSQL 9.4, however, it should work on other 
 database versions. 
-If you just have installed fresh version of PostgreSQL server don't forget to enable listening, setting `listen_address = 'localhost'` in PostgreSQL configuration
- file (on most *nix system it's located at `/etc/postgresql/9.4/main/postgresql.conf`). You may also have to adjust Host Based Authentication Policy that is 
+If you have just installed a fresh version of PostgreSQL server don't forget to enable listening by setting `listen_address = 'localhost'` in PostgreSQL configuration
+ file (on most *nix systems it's located at `/etc/postgresql/9.4/main/postgresql.conf`). You may also have to adjust Host Based Authentication Policy that is 
  described in `pg_hba.conf` file (recommended authentication method is MD5).
  
 ## User, database and schema
 
 ### Configuration on *nix systems
 
-You can manually prepare database connection or use command below that will create user, database, and set appropriate ownerships.
-*Command below must be run from postgres system user* (switch to root user then switch to postgres by `su postgres`). When prompted for password, enter
+You can manually prepare a database connection or use the command below to create the user and database, and to set appropriate ownerships.
+*The command below must be run from postgres system user* (switch to the root user then switch to postgres by `su postgres`). When prompted for password, enter
  password `realskill`.
 ```  
 createuser realskill -P && createdb realskill -O realskill && psql -d realskill -c 'ALTER SCHEMA public OWNER TO realskill;'
@@ -88,34 +88,34 @@ createuser realskill -P && createdb realskill -O realskill && psql -d realskill 
 ### Configuration on Windows systems
 
 #### Using GUI tools
-Use pgadmin to set following configuration:
+Use pgadmin to set the following configuration:
 ```
 user: realskill
 password: realskill
 database: realskill
 schema: public
 ```
-Database and schema owner must be set to `realskill` user.
+The database and schema owner must be set to `realskill` user.
 
-#### Using command line
+#### Using the command line
 
-Open Windows Command Prompt as administrator ([see help](https://technet.microsoft.com/en-us/library/cc947813.aspx)).
+Open Windows Command Prompt as the administrator ([see help](https://technet.microsoft.com/en-us/library/cc947813.aspx)).
 
-Create user `realskill` with `realskill` password.
+Create `realskill` user with `realskill` password.
 
 ```
 createuser -P -U postgres -W realskill
 ```
 
-You will be prompted for new user password twice, then postgres superuser password (default is **postgres**).
+You will be prompted for the new user password twice, then postgres superuser password (default is **postgres**).
 
-Create database `realskill` and set ownership to user `realskill` (you will be prompted for **postgres** password).
+Create the `realskill` database and set ownership to `realskill` user (you will be prompted for **postgres** password).
 
 ```
 createdb -O realskill -U postgres -W realskill
 ```
 
-Change schema public (of realskill database) ownership to user `realskill` (you will be prompted for **postgres** password).
+Change the schema public (of realskill database) ownership to `realskill` user (you will be prompted for **postgres** password).
 
 ```
 psql -d realskill -U postgres -W -c "ALTER SCHEMA public OWNER TO realskill;"
@@ -128,7 +128,7 @@ All you need is to install `docker` and `docker-compose`
 * [docker](https://docs.docker.com/engine/installation/)
 * [docker-compose](https://docs.docker.com/compose/install/)
 
-Then you can prepare environment for task on each system and not worry about configuration thanks to command:
+Then you can prepare the environment for the task on each system and should not worry about configuration thanks to the command:
     
     docker-compose up
 
