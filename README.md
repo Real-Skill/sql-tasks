@@ -1,9 +1,9 @@
 # PostgreSQL - procedures & triggers for materialized views
 
 ## Summary
-Materialized view is a database object that contains the results of a query and represents itself as a regular table. 
-It is used to increase the performance on complex schemas with large records sets and to simplify queries. 
-In this task simple schema is provided. Two materialized views are already created, but don't work as desired. 
+A materialized view is a database object that contains the results of a query and represents itself as a regular table. 
+It is used to increase the performance on complex schemas with large record sets and to simplify queries. 
+In this task a simple schema is provided. Two materialized views are already created, but don't work as desired. 
 Any change in physical tables data is not reflected in materialized views.
 
 ## Goals
@@ -20,7 +20,7 @@ The database consists of three tables:
 
  and two views:
  
-* `daily_sum_of_orders` - the sum of the products bought every day
+* `daily_sum_of_orders` - the total sum of the products bought every day
 
 | order_date | product_total  |
 |------------|----------------|
@@ -29,7 +29,7 @@ The database consists of three tables:
 | ...        | ...            | 
 
 
-* `top_100_buyers` - 100 customers who spend the most money
+* `top_100_buyers` - 100 customers who have spent the most money
 
 | first_name   | last_name  | total_amount      |  
 |--------------|------------|-------------------|
@@ -38,8 +38,8 @@ The database consists of three tables:
 | ...          | ...        | ...               |
 
 
-Modify **daily_sum_of_orders.sql** and **top_100_buyers.sql** files so that the views refresh every time the data change in the depended physical tables. 
-In other words, provide solution that will keep materialized views in sync with actual data.
+Modify **daily_sum_of_orders.sql** and **top_100_buyers.sql** files so that the views refresh every time the data changes in the dependent physical tables. 
+In other words, provide a solution that will keep materialized views in sync with actual data.
 
 
 ## Setup
@@ -47,14 +47,14 @@ In other words, provide solution that will keep materialized views in sync with 
 ### Install dependencies 
 
 ```
-yarn install
+npm install
 ```
  
 ### Database connection
 
-You are required to provide valid connection to working PostgreSQL instance. This scaffolding is tested on PostgreSQL 9.4, however it should work on other 
-database server version. 
-If you have just installed fresh version of PostgreSQL server don't forget to enable listening, setting `listen_address = 'localhost'` in PostgreSQL configuration
+You are required to provide a valid connection to working PostgreSQL instance. This scaffolding is tested on PostgreSQL 9.4, however, it should work on other 
+database server versions. 
+If you have just installed a fresh version of PostgreSQL server don't forget to enable listening by setting `listen_address = 'localhost'` in PostgreSQL configuration
  file (on most *nix system it's located at `/etc/postgresql/9.4/main/postgresql.conf`). You may also have to adjust Host Based Authentication Policy that is 
  described in `pg_hba.conf` file (recommended authentication method is MD5).
  
@@ -62,8 +62,8 @@ If you have just installed fresh version of PostgreSQL server don't forget to en
 
 ### Configuration on *nix systems
 
-You can manually prepare database connection or use command below that will create user, database, and set appropriate ownerships.
-*Command below must be run from postgres system user* (switch to root user then switch to postgres by `su postgres`). When prompted for password, enter
+You can manually prepare the database connection or use the command below to create the user and database, and to set appropriate ownerships.
+*The command below must be run from postgres system user* (switch to the root user then switch to postgres by `su postgres`). When prompted for password, enter
  password `realskill`.
 ```  
 createuser realskill -P && createdb realskill -O realskill && psql -d realskill -c 'ALTER SCHEMA public OWNER TO realskill;'
@@ -72,34 +72,34 @@ createuser realskill -P && createdb realskill -O realskill && psql -d realskill 
 ### Configuration on Windows systems
 
 #### Using GUI tools
-Use pgadmin to set following configuration:
+Use pgadmin to set the following configuration:
 ```
 user: realskill
 password: realskill
 database: realskill
 schema: public
 ```
-Database and schema owner must be set to `realskill` user.
+The database and schema owner must be set to `realskill` user.
 
-#### Using command line
+#### Using the command line
 
 Open Windows Command Prompt as administrator ([see help](https://technet.microsoft.com/en-us/library/cc947813.aspx)).
 
-Create user `realskill` with `realskill` password.
+Create `realskill` user with `realskill` password.
 
 ```
 createuser -P -U postgres -W realskill
 ```
 
-You will be prompted for new user password twice, then postgres superuser password (default is **postgres**).
+You will be prompted for the new user password twice, then postgres superuser password (default is **postgres**).
 
-Create database `realskill` and set ownership to user `realskill` (you will be prompted for **postgres** password).
+Create the `realskill` database and set the ownership to `realskill` user (you will be prompted for **postgres** password).
 
 ```
 createdb -O realskill -U postgres -W realskill
 ```
 
-Change schema public (of realskill database) ownership to user `realskill` (you will be prompted for **postgres** password).
+Change the schema public (of realskill database) ownership to `realskill` user (you will be prompted for **postgres** password).
 
 ```
 psql -d realskill -U postgres -W -c "ALTER SCHEMA public OWNER TO realskill;"
@@ -112,7 +112,7 @@ All you need is to install `docker` and `docker-compose`
 * [docker](https://docs.docker.com/engine/installation/)
 * [docker-compose](https://docs.docker.com/compose/install/)
 
-Then you can prepare environment for task on each system and not worry about configuration thanks to command:
+Then you can prepare the environment for the task on each system and should not worry about configuration thanks to the command:
     
     docker-compose up
 
